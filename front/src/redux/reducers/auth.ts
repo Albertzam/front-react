@@ -1,15 +1,14 @@
 import { AuthActions } from "../actions/authActions";
 import { AuthType } from "../actions/authActionTypes";
-import { User, UserState } from "../entities";
+import { IStateUser, UserState } from "../entities";
 
-const user: User = JSON.parse(localStorage.getItem("user") as string);
-
+const user: IStateUser = JSON.parse(localStorage.getItem("user") as string);
 const initialState: UserState = {
   user: {
-    name: user !== null ? user.name : "",
-    apellido: user !== null ? user.apellido : "",
-    segApe: user !== null ? user.segApe : "",
-    email: user !== null ? user.email : "",
+    nombre: user ? user.user.nombre : "",
+    apellido: user ? user.user.apellido : "",
+    segApe: user ? user.user.segApe : "",
+    email: user ? user.user.email : "",
   },
   isLoggedIn: user ? true : false,
   isInProgress: false,
@@ -32,11 +31,11 @@ export default function (state = initialState, action: AuthActions): UserState {
       };
     case AuthType.LOGIN_FAIL:
       const er: any = action.error;
-      console.log(er.response.data.message);
+
       return {
         ...state,
         isInProgress: false,
-        error: er.response.data.message,
+        error: er.message,
       };
 
     case AuthType.LOGOUT:

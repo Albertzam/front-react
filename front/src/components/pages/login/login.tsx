@@ -9,7 +9,7 @@ import { Alert } from "@material-ui/lab";
 import { UserLogin } from "../../../redux/entities";
 import UserActions from "../../../redux/actions/auth";
 import { State } from "../../../redux/reducers";
-import { useEffect } from "react";
+import logo from "../../../assets/logo.png";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -19,14 +19,13 @@ export const Login = () => {
   const { error } = useSelector<State>((store) => store.auth) as any;
 
   const handleLogin = (user: UserLogin) => {
-    console.log(user);
     dispatch(UserActions.login(user.email, user.password));
   };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <img src={""} />
+        <img src={logo} />
         <form className={classes.form}>
           <TextField
             variant="outlined"

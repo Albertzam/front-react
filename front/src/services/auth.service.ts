@@ -13,8 +13,8 @@ class AuthService {
       data,
     }).then((response) => {
       if (response.data.token) {
-        console.log(response.data);
-        localStorage.setItem("user", JSON.stringify(response.data));
+        if (response.data.user.roles[0] === "MAESTRO")
+          localStorage.setItem("user", JSON.stringify(response.data));
       }
 
       return response.data;

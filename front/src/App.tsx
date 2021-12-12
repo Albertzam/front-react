@@ -3,7 +3,8 @@ import { State } from "./redux/reducers";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useGlobalStyles } from "./styles/global";
 import { Login } from "./components/pages/login/login";
-import { SideBar } from "./components/components/shared/SideBar";
+import { Test } from "./components/pages/404/test";
+
 function App() {
   const dispatch = useDispatch();
   const globalClasses = useGlobalStyles();
@@ -12,7 +13,7 @@ function App() {
   return isLoggedIn ? (
     <Router>
       <Switch>
-        <Route exact path="/" component={SideBar}></Route>
+        <Route exact path="/" component={Test}></Route>
       </Switch>
     </Router>
   ) : (

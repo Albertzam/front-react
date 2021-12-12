@@ -23,10 +23,20 @@ export class IRegister {
 
 export interface User {
   id?: string;
-  name: string;
+  nombre: string;
   apellido: string;
   segApe: string;
   email: string;
+}
+
+export interface IStateUser {
+  user: {
+    id?: string;
+    nombre: string;
+    apellido: string;
+    segApe: string;
+    email: string;
+  };
 }
 
 export interface UserLogin {

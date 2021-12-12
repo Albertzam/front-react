@@ -10,8 +10,18 @@ export const login = (email: string, password: string) => (dispatch: any) => {
   dispatch(loginRequest(data));
   return authService.login(email, password).then(
     (data) => {
-      if (data != "") {
-        dispatch(loginRequestSuccess(data));
+      if (data !== "") {
+        console.log(data.user.roles);
+        if (data.user.roles[0] === "MAESTRO") {
+          dispatch(loginRequestSuccess(data));
+        } else {
+          dispatch(
+            loginRequestError({
+              name: "User invalid",
+              message: "No disponible para alumnos",
+            })
+          );
+        }
       } else {
         dispatch(
           loginRequestError({
@@ -22,7 +32,11 @@ export const login = (email: string, password: string) => (dispatch: any) => {
       }
     },
     (error) => {
-      dispatch(loginRequestError(error));
+      const err = {
+        name: error.response.data,
+        message: error.response.data.message,
+      };
+      dispatch(loginRequestError(err));
     }
   );
 };
