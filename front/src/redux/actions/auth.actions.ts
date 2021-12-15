@@ -2,9 +2,10 @@ import { User, UserLogin } from "../entities";
 import {
   UserLoginRequest,
   UserLoginRequestError,
+  UserLoginRequestLogout,
   UserLoginRequestSuccess,
 } from "./authActions";
-import { AuthType } from "./authActionTypes";
+import { AuthType } from "./generalActionTypes";
 
 export const loginRequest = (user: UserLogin): UserLoginRequest => ({
   type: AuthType.LOGIN_REQUEST,
@@ -18,4 +19,8 @@ export const loginRequestSuccess = (user: User): UserLoginRequestSuccess => ({
 export const loginRequestError = (error: Error): UserLoginRequestError => ({
   type: AuthType.LOGIN_FAIL,
   error,
+});
+
+export const loginRequestLogout = (): UserLoginRequestLogout => ({
+  type: AuthType.LOGOUT,
 });

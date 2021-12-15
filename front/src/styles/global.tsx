@@ -12,7 +12,7 @@ export const useGlobalStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      background: "#1c1c1c",
+      background: "#242526",
     },
     appBarShift: {
       marginLeft: drawerWidth,
@@ -41,7 +41,7 @@ export const useGlobalStyles = makeStyles((theme: Theme) =>
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
       }),
-      backgroundColor: "#1c1c1c",
+      backgroundColor: "#242526",
     },
     drawerClose: {
       transition: theme.transitions.create("width", {
@@ -53,7 +53,7 @@ export const useGlobalStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.up("sm")]: {
         width: theme.spacing(7) + 1,
       },
-      backgroundColor: "#1c1c1c",
+      backgroundColor: "#242526",
     },
     toolbar: {
       display: "flex",
@@ -64,8 +64,12 @@ export const useGlobalStyles = makeStyles((theme: Theme) =>
       ...theme.mixins.toolbar,
     },
     content: {
+      display: "flex",
+      flexWrap: "wrap",
       flexGrow: 1,
-      padding: theme.spacing(3),
+      padding: theme.spacing(10),
+      background: "#18191a",
+      height: "100vh",
     },
     content_no_padding: {
       flexGrow: 1,
@@ -77,6 +81,73 @@ export const useGlobalStyles = makeStyles((theme: Theme) =>
     logo: {
       width: 30,
       height: 40,
+    },
+    card: {
+      maxWidth: 300,
+      minWidth: 300,
+      height: 170,
+      margin: "15px",
+      transition: "0.3s",
+      boxShadow: "0 8px 10px -12px rgba(0,0,0,0.3)",
+      "&:hover": {
+        boxShadow: "0 16px 30px -12.125px rgba(0,0,0,0.3)",
+        background: "#343334",
+      },
+      background: "#242526",
+      color: "#fff",
+      borderRadius: 10,
+    },
+    modal: {
+      background: "#242526",
+    },
+    buttonActions: {
+      background: "#dd0040",
+      color: "#fff",
+      "&:hover": {
+        background: "#ff004c",
+      },
+    },
+
+    buttonsGen: {
+      color: "#fff",
+      borderRadius: "5px",
+      "&:hover": {
+        background: "#18191a",
+        borderRadius: "5px",
+      },
+      float: "right",
+      margin: theme.spacing(3),
+    },
+
+    form: {
+      "& .MuiTypography-root": {
+        color: "#fff",
+      },
+
+      "& .MuiInputBase-root": {
+        color: "white",
+        backgroundColor: "#1b191d",
+      },
+      "& label.Mui-focused": {
+        color: "white",
+      },
+      "& label": {
+        color: "white",
+      },
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "#101011",
+          backgroundColor: "transparent",
+        },
+        "&:hover fieldset": {
+          borderColor: "#101011",
+          backgroundColor: "transparent",
+        },
+        "&.Mui-focused fieldset": {
+          borderColor: "#101011",
+          backgroundColor: "transparent",
+        },
+      },
     },
   })
 );

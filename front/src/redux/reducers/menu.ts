@@ -1,4 +1,4 @@
-import { MenuType } from "../actions/authActionTypes";
+import { MenuType } from "../actions/generalActionTypes";
 
 const initialState = { status: false };
 

@@ -9,8 +9,10 @@ import { ConfirmProvider } from "material-ui-confirm";
 import { SnackbarProvider } from "notistack";
 import { NavBar } from "../../components/shared/NavBar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Courses } from "../../components/courses/Courses";
+import { Login } from "../login/login";
 export const Test = () => {
-  const dispatch = useDispatch();
+  /*const dispatch = useDispatch();
   const globalClasses = useGlobalStyles();
   const { isLoggedIn } = useSelector<State>((store) => store.auth) as any;
   const sidebarProps: SideBarProps = {
@@ -21,26 +23,26 @@ export const Test = () => {
     items: [
       {
         icon: <Home style={{ fill: "#fff" }} />,
-        url: "/dashboard",
-        text: "Dashboard",
+        url: "/courses",
+        text: "Test",
         allowedRoles: ["MAESTRO"],
       },
       {
         icon: <LocalShipping style={{ fill: "#fff" }} />,
         url: "/supply",
-        text: "Insumos",
+        text: "Test",
         allowedRoles: ["MAESTRO"],
       },
       {
         icon: <Apartment style={{ fill: "#fff" }} />,
         url: "/branches",
-        text: "Sucursales",
+        text: "Test",
         allowedRoles: ["MAESTRO"],
       },
       {
         icon: <Person style={{ fill: "#fff" }} />,
         url: "/user",
-        text: "Usuarios",
+        text: "Test",
         allowedRoles: ["MAESTRO"],
       },
     ],
@@ -58,10 +60,17 @@ export const Test = () => {
             }}
           />
           <SideBar {...sidebarProps} />
+          <Switch>
+            <Route exact path="/" component={Test}></Route>
+            <Route exact path="/courses" component={Courses}></Route>
+          </Switch>
         </Router>
       </SnackbarProvider>
     </ConfirmProvider>
   ) : (
-    <span></span>
-  );
+    <Router>
+      <Route path="/" component={Login}></Route>
+    </Router>
+  );*/
+  return <h2></h2>;
 };

@@ -9,8 +9,8 @@ import { Alert } from "@material-ui/lab";
 import { UserLogin } from "../../../redux/entities";
 import UserActions from "../../../redux/actions/auth";
 import { State } from "../../../redux/reducers";
-import logo from "../../../assets/logo.png";
-
+import logo from "../../../assets/logo_2.png";
+import "./login.css";
 export const Login = () => {
   const dispatch = useDispatch();
   const classes = useLoginStyles();
@@ -22,62 +22,98 @@ export const Login = () => {
     dispatch(UserActions.login(user.email, user.password));
   };
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <img src={logo} />
-        <form className={classes.form}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Correo Electrónico"
-            name="email"
-            autoComplete="email"
-            inputRef={register({ required: true })}
-            className={errors.user && classes.textField}
-            autoFocus
-          />
+    <div
+      style={{
+        backgroundColor: "#101011",
+        height: "100vh",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Container
+        component="main"
+        style={{
+          backgroundColor: "#1b1a1d",
+          padding: "20px",
+          borderRadius: "10px",
+        }}
+        maxWidth="xs"
+      >
+        <CssBaseline />
+        <div className={classes.paper}>
+          <img src={logo} width={100} height={120} />
+          <form className={classes.form}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Correo Electrónico"
+              name="email"
+              autoComplete="email"
+              inputRef={register({ required: true })}
+              className={classes.textField}
+              autoFocus
+            />
 
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Contraseña"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            inputRef={register({
-              required: true,
-              minLength: 6,
-              maxLength: 30,
-            })}
-            className={errors.password && classes.textField}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={handleSubmit(handleLogin)}
-          >
-            Iniciar Sesión
-          </Button>
-          {errors.user && (
-            <Alert severity="error">Ingresa tu correo electrónico</Alert>
-          )}
-          {errors.password && (
-            <Alert severity="error">Ingresa tu contraseña</Alert>
-          )}
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Contraseña"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              inputRef={register({
+                required: true,
+                minLength: 6,
+                maxLength: 30,
+              })}
+              className={classes.textField}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={handleSubmit(handleLogin)}
+            >
+              Iniciar Sesión
+            </Button>
+            {errors.email && (
+              <Alert
+                severity="error"
+                style={{ backgroundColor: "transparent", color: "#fff" }}
+              >
+                Ingresa tu correo electrónico
+              </Alert>
+            )}
+            {errors.password && (
+              <Alert
+                severity="error"
+                style={{ backgroundColor: "transparent", color: "#fff" }}
+              >
+                Ingresa tu contraseña
+              </Alert>
+            )}
 
-          {error && <Alert severity="error">{error}</Alert>}
-        </form>
-      </div>
-    </Container>
+            {error && (
+              <Alert
+                severity="error"
+                style={{ backgroundColor: "transparent", color: "#fff" }}
+              >
+                {error}
+              </Alert>
+            )}
+          </form>
+        </div>
+      </Container>
+    </div>
   );
 };

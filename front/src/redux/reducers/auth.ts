@@ -1,5 +1,5 @@
 import { AuthActions } from "../actions/authActions";
-import { AuthType } from "../actions/authActionTypes";
+import { AuthType } from "../actions/generalActionTypes";
 import { IStateUser, UserState } from "../entities";
 
 const user: IStateUser = JSON.parse(localStorage.getItem("user") as string);

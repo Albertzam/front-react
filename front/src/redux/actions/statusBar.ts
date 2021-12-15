@@ -1,4 +1,4 @@
-import { MenuType } from "./authActionTypes";
+import { MenuType } from "./generalActionTypes";
 
 const toggleMenu = (status: boolean) => (dispatch: any) => {
   if (status) {

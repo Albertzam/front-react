@@ -8,6 +8,8 @@ export interface UserLoginRequestSuccess extends ApiCallAction {
 
 export type UserLoginRequestError = ApiCallAction;
 
+export interface UserLoginRequestLogout {}
 export type AuthActions = UserLoginRequest &
   UserLoginRequestSuccess &
-  UserLoginRequestError;
+  UserLoginRequestError &
+  UserLoginRequestLogout;

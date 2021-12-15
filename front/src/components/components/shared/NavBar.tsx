@@ -1,6 +1,6 @@
 import { useConfirm } from "material-ui-confirm";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { State } from "../../../redux/reducers";
 import { useGlobalStyles } from "../../../styles/global";
@@ -16,6 +16,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ExitIcon from "@material-ui/icons/ExitToApp";
 import logo from "../../../assets/logo_2.png";
 import "./css/navBar.css";
+import UserActions from "../../../redux/actions/auth";
 export interface NavBarProps {
   onOpen?: () => void;
   onNavBarInit?: () => void;
@@ -23,6 +24,7 @@ export interface NavBarProps {
 }
 
 export const NavBar = (props: NavBarProps): JSX.Element => {
+  const dispatch = useDispatch();
   const { status } = useSelector<State>((store) => store.menu) as any;
   const { isLoggedIn } = useSelector<State>((store) => store.auth) as any;
   const globalClasses = useGlobalStyles();
@@ -46,6 +48,7 @@ export const NavBar = (props: NavBarProps): JSX.Element => {
       if (props.onLogOut) {
         props.onLogOut();
       }
+      dispatch(UserActions.logout());
       history.push("/");
     });
   };
@@ -91,7 +94,7 @@ export const NavBar = (props: NavBarProps): JSX.Element => {
             user.user.segApe ? user.user.segApe : ""
           } `}
         </Typography>
-        <IconButton onClick={Logout} className="IconButton" size="medium">
+        <IconButton onClick={Logout} style={{ color: "white" }} size="medium">
           <ExitIcon />
         </IconButton>
       </Toolbar>

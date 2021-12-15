@@ -2,6 +2,7 @@ import authService from "../../services/auth.service";
 import {
   loginRequest,
   loginRequestError,
+  loginRequestLogout,
   loginRequestSuccess,
 } from "./auth.actions";
 
@@ -41,6 +42,12 @@ export const login = (email: string, password: string) => (dispatch: any) => {
   );
 };
 
+export const logout = () => (dispatch: any) => {
+  dispatch(loginRequestLogout());
+  localStorage.removeItem("user");
+};
+
 export default {
   login,
+  logout,
 };
