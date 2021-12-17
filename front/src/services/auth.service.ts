@@ -20,6 +20,10 @@ class AuthService {
       return response.data;
     });
   }
+
+  logout() {
+    localStorage.removeItem("user");
+  }
 }
 
 export default new AuthService();

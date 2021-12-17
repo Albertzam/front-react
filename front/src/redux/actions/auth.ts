@@ -43,8 +43,9 @@ export const login = (email: string, password: string) => (dispatch: any) => {
 };
 
 export const logout = () => (dispatch: any) => {
+  console.log("Si llama");
+  authService.logout();
   dispatch(loginRequestLogout());
-  localStorage.removeItem("user");
 };
 
 export default {

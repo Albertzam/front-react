@@ -78,6 +78,7 @@ export function TablePaginationActions(
   return (
     <div className={classes.root}>
       <IconButton
+        style={{ color: "white" }}
         onClick={handleFirstPageButtonClick}
         disabled={page === 0}
         aria-label="first page"
@@ -85,14 +86,15 @@ export function TablePaginationActions(
         {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
       </IconButton>
       <IconButton
+        style={{ color: "white" }}
         onClick={handleBackButtonClick}
         disabled={page === 0}
         aria-label="previous page"
       >
         {theme.direction === "rtl" ? (
-          <KeyboardArrowRight />
+          <KeyboardArrowRight style={{ color: "white" }} />
         ) : (
-          <KeyboardArrowLeft />
+          <KeyboardArrowLeft style={{ color: "white" }} />
         )}
       </IconButton>
       <IconButton
@@ -101,9 +103,9 @@ export function TablePaginationActions(
         aria-label="next page"
       >
         {theme.direction === "rtl" ? (
-          <KeyboardArrowLeft />
+          <KeyboardArrowLeft style={{ color: "white" }} />
         ) : (
-          <KeyboardArrowRight />
+          <KeyboardArrowRight style={{ color: "white" }} />
         )}
       </IconButton>
       <IconButton
@@ -111,7 +113,11 @@ export function TablePaginationActions(
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="last page"
       >
-        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+        {theme.direction === "rtl" ? (
+          <FirstPageIcon style={{ color: "white" }} />
+        ) : (
+          <LastPageIcon style={{ color: "white" }} />
+        )}
       </IconButton>
     </div>
   );
@@ -179,7 +185,7 @@ export function ReactTable<T extends object>({
   )(TableRow);
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{ background: "#1c1c1c" }}>
       <Table stickyHeader className={classes.table} {...getTableProps()}>
         <TableHead>
           {headerGroups.map((headerGroup) => (
@@ -187,7 +193,12 @@ export function ReactTable<T extends object>({
               {headerGroup.headers.map((column) => (
                 <StyledTableCell
                   {...column.getHeaderProps({
-                    style: { minWidth: column.minWidth, width: column.width },
+                    style: {
+                      minWidth: column.minWidth,
+                      width: column.width,
+                      background: "#1c1c1c",
+                      color: "white",
+                    },
                   })}
                 >
                   {column.render("Header")}
@@ -218,6 +229,7 @@ export function ReactTable<T extends object>({
                         style: {
                           minWidth: cell.column.minWidth,
                           width: cell.column.width,
+                          color: "white",
                         },
                       })}
                     >
@@ -249,6 +261,7 @@ export function ReactTable<T extends object>({
               count={rows.length}
               rowsPerPage={rowsPerPage}
               page={page}
+              style={{ color: "#fff" }}
               SelectProps={{
                 inputProps: { "aria-label": "rows per page" },
                 native: true,

@@ -39,6 +39,7 @@ export default function (state = initialState, action: AuthActions): UserState {
       };
 
     case AuthType.LOGOUT:
+      console.log("Entraaaaa");
       return {
         ...state,
         isLoggedIn: false,

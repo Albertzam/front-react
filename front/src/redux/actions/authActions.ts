@@ -6,7 +6,7 @@ export interface UserLoginRequestSuccess extends ApiCallAction {
   user: User;
 }
 
-export type UserLoginRequestError = ApiCallAction;
+export interface UserLoginRequestError extends ApiCallAction {}
 
 export interface UserLoginRequestLogout {}
 export type AuthActions = UserLoginRequest &

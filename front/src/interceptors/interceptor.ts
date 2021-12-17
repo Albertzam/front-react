@@ -2,6 +2,10 @@ import axios from "axios";
 import { Store } from "redux";
 import * as moment from "moment";
 import { State } from "../redux/reducers";
+import AuthAction from "../redux/actions/auth";
+import { useDispatch } from "react-redux";
+import { AuthType } from "../redux/actions/generalActionTypes";
+
 export const setupAxiosTokenInterceptor = (store: Store<State>) => {
   axios.interceptors.request.use((config) => {
     const storedUserStr = localStorage.getItem("user");
@@ -22,9 +26,10 @@ export const setupAxiosTokenInterceptor = (store: Store<State>) => {
     },
     async function (error) {
       if (error.response.status === 401) {
-        if (store.getState().auth.isInProgress) {
+        console.log(store.getState().auth.isInProgress);
+        if (store.getState().auth.isLoggedIn) {
           window.location.replace("/");
-          //AuthActions.logout()(store);
+          AuthAction.logout()(store);
         }
       }
       return Promise.reject(error);

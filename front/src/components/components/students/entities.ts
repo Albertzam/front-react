@@ -6,7 +6,6 @@ export interface ICourse {
   createdAt?: Date;
   status: string;
   description?: string;
-  idCourse: string;
 }
 
 export interface INewCourse {

@@ -10,6 +10,7 @@ const initialState: CourseState = {
       id: "",
       name: "",
       status: "",
+      idCourse: "",
     },
     isInProgress: false,
   },
@@ -17,6 +18,7 @@ const initialState: CourseState = {
     course: {
       name: "",
       status: "",
+      idCourse: "",
     },
   },
 };

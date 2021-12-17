@@ -17,10 +17,11 @@ import { useGlobalStyles } from "../../../styles/global";
 import { useModalStyles } from "../../../styles/modal";
 import { Cards } from "../shared/Card";
 import { ICourse, INewCourse, IUpdateCourse } from "./entities";
-
+import "../../components/shared/css/card.css";
 import CourseActions, { editCourse } from "./redux/actions/curse";
 import { useConfirm } from "material-ui-confirm";
 import { useSnackbar, VariantType } from "notistack";
+import { Link } from "react-router-dom";
 export const Courses = () => {
   const globalClasses = useGlobalStyles();
   const dispatch = useDispatch();
@@ -149,17 +150,22 @@ export const Courses = () => {
           </DialogActions>
         </DialogContent>
       </Dialog>
-      {courseList.map((a: ICourse) => (
-        <Cards
-          name={a.name}
-          status={a.status}
-          date={a.createdAt}
-          onClick={() => {
-            handleOpen(a);
-          }}
-          onClickEliminate={() => handleEliminate(a)}
-        ></Cards>
-      ))}
+      <div className={globalClasses.contentBody}>
+        {courseList.map((a: ICourse) => (
+          <Cards
+            id={a.id as string}
+            name={a.name}
+            status={a.status}
+            date={a.createdAt}
+            onClick={() => {
+              handleOpen(a);
+            }}
+            onClickEliminate={() => handleEliminate(a)}
+            cargar={true}
+            idCourse={a.idCourse}
+          ></Cards>
+        ))}
+      </div>
     </main>
   );
 };

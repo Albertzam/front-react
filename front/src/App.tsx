@@ -11,6 +11,7 @@ import { ConfirmProvider } from "material-ui-confirm";
 import { SnackbarProvider } from "notistack";
 import { NavBar } from "./components/components/shared/NavBar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Homeworks } from "./components/components/homeworks/Homeworks";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function App() {
       },
       {
         icon: <LocalShipping style={{ fill: "#fff" }} />,
-        url: "/supply",
+        url: "/homeworks/dd",
         text: "Test",
         allowedRoles: ["MAESTRO"],
       },
@@ -62,6 +63,7 @@ function App() {
           />
           <SideBar {...sidebarProps} />
           <Switch>
+            <Route exact path="/homeworks/:id" component={Homeworks}></Route>
             <Route exact path="/courses" component={Courses}></Route>
             <Route exact path="/" component={Courses}></Route>
           </Switch>

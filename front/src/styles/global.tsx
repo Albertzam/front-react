@@ -1,6 +1,15 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import { keyframes } from "@mui/styled-engine";
 
 const drawerWidth = 200;
+const fadeIn = keyframes({
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1,
+  },
+});
 export const useGlobalStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -70,6 +79,8 @@ export const useGlobalStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(10),
       background: "#18191a",
       height: "100vh",
+      maxHeight: "100rem",
+      minHeight: "100%",
     },
     content_no_padding: {
       flexGrow: 1,
@@ -118,7 +129,13 @@ export const useGlobalStyles = makeStyles((theme: Theme) =>
       float: "right",
       margin: theme.spacing(3),
     },
-
+    contentBody: {
+      position: "absolute",
+      display: "flex",
+      flexWrap: "wrap",
+      flexGrow: 1,
+      marginTop: theme.spacing(10),
+    },
     form: {
       "& .MuiTypography-root": {
         color: "#fff",
@@ -148,6 +165,37 @@ export const useGlobalStyles = makeStyles((theme: Theme) =>
           backgroundColor: "transparent",
         },
       },
+      "& .MuiSvgIcon-root": {
+        color: "#fff",
+      },
+    },
+
+    MuiPickersModal: {
+      dialogAction: {
+        color: "#33abb6",
+        backgroundColor: "#1c1c1c",
+      },
+    },
+    datePicker: {
+      MuiPickersToolbar: {
+        toolbar: {
+          backgroundColor: "#8bc34a",
+        },
+      },
+      MuiPickersCalendarHeader: {
+        switchHeader: {
+          backgroundColor: "white",
+          color: "#1b5e20",
+        },
+      },
+    },
+    contentTable: {
+      width: "90%",
+      position: "absolute",
+      display: "flex",
+      flexWrap: "wrap",
+      flexGrow: 1,
+      marginTop: theme.spacing(10),
     },
   })
 );
